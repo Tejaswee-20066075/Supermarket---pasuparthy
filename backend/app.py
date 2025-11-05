@@ -16,3 +16,9 @@ class User(db.Model):                                                       //so
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(64), nullable=False)
 
+class Product(db.Model):                                              // we are adding stock items as product model in database
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    price = db.Column(db.Float, nullable=False)
+    quantity = db.Column(db.Integer, nullable=False)
+
