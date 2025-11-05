@@ -29,5 +29,15 @@ def health():
     return jsonify({"status": "ok"})    
 
 
+#registering a user
+
+@app.route("/api/register", methods=[POST])
+def register():
+    data = request.get_json()
+    name = data.get("name")
+    email = data.get("email")
+    password = data.get("password")
+
+
 
 
