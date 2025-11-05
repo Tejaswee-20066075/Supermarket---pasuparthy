@@ -10,3 +10,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db' //here we are cr
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False            
 db = SQLAlchemy(app)
 
+class User(db.Model):                                                       //so here we are creating user model in database we have created id,name,email,password also we are hashing passwords
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password_hash = db.Column(db.String(64), nullable=False)
+
