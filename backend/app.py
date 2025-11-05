@@ -43,6 +43,14 @@ def register():
     existing_user = User.query.filter_by(email=email).first()
     if existing_user:
         return jsonify({"error": "Email already registered"}), 400
+
+
+#hashing password using python library hashlib
+
+password_hash = hashlib.sha256(password.encode()).hexdigest()    
+    new_user = User(name=name, email=email, password_hash=password_hash)
+    db.session.add(new_user)
+    db.session.commit()
         
 
 
