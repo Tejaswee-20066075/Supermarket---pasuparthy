@@ -37,6 +37,14 @@ def register():
     name = data.get("name")
     email = data.get("email")
     password = data.get("password")
+    if not name || not email || not password:
+        return josonify({"error": "All fields are required"}), 400
+        
+    existing_user = User.query.filter_by(email=email).first()
+    if existing_user:
+        return jsonify({"error": "Email already registered"}), 400
+        
+
 
 
 
