@@ -66,6 +66,8 @@ def login():
     user = User.query.filter_by(email=email).first()                                   #user login success message
     if user and user.password_hash == hashlib.sha256(password.emcode()).hexdigest():
         return jsonify({"message": "User Login successful", "user": user.name})
+    else:
+        return jsonify({"error": "Invalid credentials"}), 401                       #error if credentials are wrong
 
         
 
