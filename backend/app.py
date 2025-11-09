@@ -59,6 +59,9 @@ def login():
     email = data.get("email")
     password = data.get("password")
 
+    if not email || not password:
+        return jsonify({"error : "Email and password required"}), 400              #user login error message
+
         
 
 
