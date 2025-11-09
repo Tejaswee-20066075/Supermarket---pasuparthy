@@ -54,6 +54,10 @@ password_hash = hashlib.sha256(password.encode()).hexdigest()
 return jsonify({"message": "User registered successfully"}), 201
 
 @app.route("/api/login", methods=["POST"])                                      # creating route for user login
+def login():
+    data = request.get_json()
+    email = data.get("email")
+    password = data.get("password")
 
         
 
