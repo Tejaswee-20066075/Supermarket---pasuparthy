@@ -62,6 +62,11 @@ def login():
     if not email || not password:
         return jsonify({"error : "Email and password required"}), 400              #user login error message
 
+
+    user = User.query.filter_by(email=email).first()                                   #user login success message
+    if user and user.password_hash == hashlib.sha256(password.emcode()).hexdigest():
+        return jsonify({"message": "User Login successful", "user": user.name})
+
         
 
 
