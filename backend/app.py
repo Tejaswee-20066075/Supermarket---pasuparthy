@@ -70,6 +70,11 @@ def login():
         return jsonify({"error": "Invalid credentials"}), 401                       #error if credentials are wrong
 
 @app.route("/api/products", methods=["POST"])                                       #crearing route for products items
+def create_product():                                                              
+    data = request.get_json()
+    name = data.get("name")
+    price = data.get("price")
+    quantity = data.get("quantity")
 
         
 
