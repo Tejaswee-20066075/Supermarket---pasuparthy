@@ -52,6 +52,9 @@ password_hash = hashlib.sha256(password.encode()).hexdigest()
     db.session.add(new_user)
     db.session.commit()
 return jsonify({"message": "User registered successfully"}), 201
+
+@app.route("/api/login", methods=["POST"])                                      # creating route for user login
+
         
 
 
