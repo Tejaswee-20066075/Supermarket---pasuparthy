@@ -88,6 +88,14 @@ def create_product():
 def get_products():                                                                    #function to get all products
     products = Product.query.all()                                                     # it represents sqlalchemy table for products
     result = []
+    for p in products:                                                                #converting sqlalchemy objects to json
+        result.append({
+            "id": p.id,
+            "name": p.name,
+            "price": p.price,
+            "quantity": p.quantity
+        })
+    return jsonify(result)
         
 
 
