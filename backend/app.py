@@ -69,6 +69,8 @@ def login():
     else:
         return jsonify({"error": "Invalid credentials"}), 401                       #error if credentials are wrong
 
+@app.route("/api/products", methods=["POST"])                                       #crearing route for products items
+
         
 
 
