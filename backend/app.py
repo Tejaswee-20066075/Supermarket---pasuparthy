@@ -112,6 +112,8 @@ def update_product(id):                                                         
 
     return jsonify({"message": "Product updated successfully"})                       #once the product is updated return successful message
 
+@app.route("/api/products/<int:id>", methods=["DELETE"])                              #route to delete product by id
+
 
 
 
