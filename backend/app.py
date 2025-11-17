@@ -104,6 +104,13 @@ def update_product(id):                                                         
         return jsonify({"error": "Product not found"}), 404                           #if product id doesnt found returns 404
 
 
+    data = request.get_json()
+    product.name = data.get(name, product.name)
+    product.price = data.get(price, product.price)
+    product.quantity = data.get(quantity, product.quantity)
+    db.session.commit)                                                                #take input from html and save changes to database
+
+
 
 
 
