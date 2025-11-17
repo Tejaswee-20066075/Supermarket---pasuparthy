@@ -115,6 +115,8 @@ def update_product(id):                                                         
 @app.route("/api/products/<int:id>", methods=["DELETE"])                              #route to delete product by id
 def delete_product(id):
     product = Product.query.get(id)                                                   #function for delete product
+    if not product:
+        return jsonify({"error": "Product not found"}), 404                           #if product id doesnt found return error
 
 
 
