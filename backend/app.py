@@ -96,7 +96,9 @@ def get_products():                                                             
             "quantity": p.quantity
         })
     return jsonify(result)
-        
+
+@app.route("/api/products/<int:id>", methods=["PUT"])                                 #route for updating the products by id
+
 
 
 
