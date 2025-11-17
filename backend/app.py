@@ -118,6 +118,10 @@ def delete_product(id):
     if not product:
         return jsonify({"error": "Product not found"}), 404                           #if product id doesnt found return error
 
+    db.session.delete(product)                                                        #delete from database
+    db.session.commit()
+    return jsonify({"message": "Product deleted successfully"})                       #if it is deleted then return message success
+
 
 
 
