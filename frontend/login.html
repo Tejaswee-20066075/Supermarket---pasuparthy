@@ -22,7 +22,15 @@
         method: "POST",                                                                                           //POST the login data in json format also converts js object to json
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: email, password: pass })
-    })
+        })
+        .then(function(response) {                                                                       //response in here contains status code like 200,400,404
+          return response.json().then(function(data) {                                                   //that response convert to js object
+              if (response.ok) {                                                                         //reponse ok means it is success
+                  alert("You have Logged in Successfully!");                                             //throws success message with redirecting page to products.html
+                  window.location = "products.html";
+              } else {
+                  alert(data.error || "Invalid username or password");                                   //if data is error then throw message invalid
+              }
       }
     </script>
     
