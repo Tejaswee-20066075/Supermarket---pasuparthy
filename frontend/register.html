@@ -7,7 +7,7 @@
 <body>
     <h2>Register</h2>
     <form name="RegistrationForm" onsubmit="return doRegister()">
-        <input class="box" type="text" name=username placeholder=Name required>
+        <input class="box" type="text" name=name placeholder=Name required>
         <input class="box" type=email name=email placeholder=Email required>
         <input class="box" type=password name=password placeholder=Password required>
         <input class="box" type=password name=confirm placeholder=Confirm Password required>
@@ -18,7 +18,7 @@
     <script>
         var API_URL = "https://tejaswee-20066075-supermarket---pasuparthy-5000.app.github.dev";                       
         function doRegister() {                                                                      //function for registration
-            var name = document.RegistrationForm.username.value;                                     //get name,email etc from form
+            var name = document.RegistrationForm.name.value;                                     //get name,email etc from form
             var email = document.RegistrationForm.email.value;
             var pass = document.RegistrationForm.password.value;
             var conf = document.RegistrationForm.confirm.value;
@@ -26,5 +26,13 @@
             alert("Passwords do not match");
             return false;
         }
+        fetch(API_URL + "/api/register", {                                                       //sends request from js to backend API
+            method: POST,                                                                        //method POST send data to server
+            headers: { "Content-Type": "application/joson" },
+            body: JSON.stringify({                                                               //give data in json format
+                name: name,
+                email: email,
+                password: pass
+            })
     </script>
 </body>
