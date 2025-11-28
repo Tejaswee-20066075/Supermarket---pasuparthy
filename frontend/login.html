@@ -31,7 +31,15 @@
               } else {
                   alert(data.error || "Invalid username or password");                                   //if data is error then throw message invalid
               }
-      }
+          });
+        })
+        .catch(function(error) {                                                                 //catch runs when serve or network issue occurs
+        alert("Error connecting to server");                                                     //shows issue with backend connectivity
+        console.error(error);
+    });
+
+    return false;                              //stop page to refresh
+}
     </script>
     
   </body>
