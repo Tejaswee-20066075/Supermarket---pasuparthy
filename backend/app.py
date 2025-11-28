@@ -49,8 +49,8 @@ def register():
 
 password_hash = hashlib.sha256(password.encode()).hexdigest()    
 new_user = User(name=name, email=email, password_hash=password_hash)
- db.session.add(new_user)
- db.session.commit()
+db.session.add(new_user)
+db.session.commit()
 return jsonify({"message": "User registered successfully"}), 201
 
 @app.route("/api/login", methods=["POST"])                                      # creating route for user login
@@ -59,8 +59,8 @@ def login():
     email = data.get("email")
     password = data.get("password")
 
-    if not email || not password:
-        return jsonify({"error : "Email and password required"}), 400              #user login error message
+    if not email or not password:
+        return jsonify({"error" : "Email and password required"}), 400              #user login error message
 
 
     user = User.query.filter_by(email=email).first()                                   #user login success message
