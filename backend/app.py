@@ -99,9 +99,9 @@ def get_products():                                                             
 
 @app.route("/api/products/<int:id>", methods=["PUT"])                                 #route for updating the products by id
 def update_product(id):                                                               #function product update
-    product = Product.query.get(id)                                                   #it looks for product id in database
-     if not product:
-        return jsonify({"error": "Product not found"}), 404                           #if product id doesnt found returns 404
+    product = Product.query.get(id)
+        if not Product:                                               #it looks for product id in databaseif not product:
+            return jsonify({"error": "Product not found"}), 404                           #if product id doesnt found returns 404
 
 
     data = request.get_json()
