@@ -48,9 +48,9 @@ def register():
 #hashing password using python library hashlib
 
 password_hash = hashlib.sha256(password.encode()).hexdigest()    
-    new_user = User(name=name, email=email, password_hash=password_hash)
-    db.session.add(new_user)
-    db.session.commit()
+new_user = User(name=name, email=email, password_hash=password_hash)
+db.session.add(new_user)
+db.session.commit()
 return jsonify({"message": "User registered successfully"}), 201
 
 @app.route("/api/login", methods=["POST"])                                      # creating route for user login
