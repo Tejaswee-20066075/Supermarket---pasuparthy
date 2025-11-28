@@ -8,3 +8,15 @@ body {
     margin-top: 10px;
     display: block;
 }
+button {
+    margin-top: 15px;
+    padding: 10px;
+    width: 318px;
+    background: #333;
+    color: white;
+}
+button{background: #444;}
+
+a {font-size: 14px;}
+
+
