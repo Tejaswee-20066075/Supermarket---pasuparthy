@@ -6,7 +6,12 @@
 </head>
 <body>
     <h2>Register</h2>
-    <form>
+    <form name="RegistrationForm" onsubmit="return doRegister()">
+        <input class="box" type="text" name=username placeholder=Name required>
+        <input class="box" type=email name=email placeholder=Email required>
+        <input class="box" type=password name=password placeholder=Password required>
+        <input class="box" type=password name=confirm placeholder=Confirm Password required>
+        <button type="submit">Register</button>
         
     </form>
 </body>
