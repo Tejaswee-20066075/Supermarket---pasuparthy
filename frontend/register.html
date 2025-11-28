@@ -45,5 +45,13 @@
                 }
             });
         })
+         .catch(function(error) {                                 //when server or network connectivoty issue occurs
+            alert("Error connecting to server");
+            console.error(error);
+        });
+
+        return false;
+    }
     </script>
 </body>
+</html>
