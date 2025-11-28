@@ -22,5 +22,9 @@
             var email = document.RegistrationForm.email.value;
             var pass = document.RegistrationForm.password.value;
             var conf = document.RegistrationForm.confirm.value;
+            if (pass !== conf) {                                                                  //if password and confirm password are same return they doesn't match
+            alert("Passwords do not match");
+            return false;
+        }
     </script>
 </body>
