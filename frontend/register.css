@@ -2,4 +2,9 @@ body {
     font-family: Arial;
     margin: 40px;
 }
-
+.box {
+    width: 300px;
+    padding: 8px;
+    margin-top: 10px;
+    display: block;
+}
