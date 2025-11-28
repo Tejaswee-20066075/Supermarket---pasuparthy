@@ -75,7 +75,7 @@ def create_product():
     name = data.get("name")
     price = data.get("price")
     quantity = data.get("quantity")
-    if not name || price is None || quantity is None:                                    #error message for product requirement fields
+    if not name or price is None or quantity is None:                                    #error message for product requirement fields
         return jsonify({"error": "Name, price, and quantity are required"}), 400
 
     new_product = Product(name=name, price=price, quantity=quantity)                     #adding product to db
