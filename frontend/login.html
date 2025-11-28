@@ -18,6 +18,11 @@
       function validateLogin() {                                                                                  //creating function to validate login credentials
         var email = document.loginForm.email.value                                                                // variable email get from login form
         var pass  = document.loginForm.password.value                                                             // variable pass get from login form
+        fetch(API_URL + "/api/login", {                                                                           //calling backend login API
+        method: "POST",                                                                                           //POST the login data in json format also converts js object to json
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email, password: pass })
+    })
       }
     </script>
     
