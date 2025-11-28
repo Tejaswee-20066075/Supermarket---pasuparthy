@@ -7,9 +7,9 @@
   <body>
     <div class="login-box">
       <h2>Login to your aAccount!</h2>
-      <form id="loginForm">
-        <input input type=email id=email placeholder=Email required>
-        <input type=password id=password placeholder=Password required>
+      <form id="loginForm" name="loginForm" onsubmit="return validateLogin()">
+        <input input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Password" required>
         <button type=submit>Login</button>
       </form>
     <p><a href="register.html">Don't have an account? Register Now</a></p>
