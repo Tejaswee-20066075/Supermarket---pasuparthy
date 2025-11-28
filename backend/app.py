@@ -31,7 +31,7 @@ def health():
 
 #registering a user
 
-@app.route("/api/register", methods=[POST])
+@app.route("/api/register", methods=["POST"])
 def register():
     data = request.get_json()
     name = data.get("name")
@@ -47,11 +47,11 @@ def register():
 
 #hashing password using python library hashlib
 
-password_hash = hashlib.sha256(password.encode()).hexdigest()    
-new_user = User(name=name, email=email, password_hash=password_hash)
-db.session.add(new_user)
-db.session.commit()
-return jsonify({"message": "User registered successfully"}), 201
+    password_hash = hashlib.sha256(password.encode()).hexdigest()    
+    new_user = User(name=name, email=email, password_hash=password_hash)
+    db.session.add(new_user)
+    db.session.commit()
+    return jsonify({"message": "User registered successfully"}), 201
 
 @app.route("/api/login", methods=["POST"])                                      # creating route for user login
 def login():
@@ -104,13 +104,13 @@ def update_product(id):                                                         
             return jsonify({"error": "Product not found"}), 404                           #if product id doesnt found returns 404
 
 
-    data = request.get_json()
-    product.name = data.get(name, product.name)
-    product.price = data.get(price, product.price)
-    product.quantity = data.get(quantity, product.quantity)
-    db.session.commit()                                                              #take input from html and save changes to database
+        data = request.get_json()
+        product.name = data.get(name, product.name)
+        product.price = data.get(price, product.price)
+        product.quantity = data.get(quantity, product.quantity)
+        db.session.commit()                                                              #take input from html and save changes to database
 
-    return jsonify({"message": "Product updated successfully"})                       #once the product is updated return successful message
+        return jsonify({"message": "Product updated successfully"})                       #once the product is updated return successful message
 
 @app.route("/api/products/<int:id>", methods=["DELETE"])                              #route to delete product by id
 def delete_product(id):
