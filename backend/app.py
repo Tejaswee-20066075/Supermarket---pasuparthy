@@ -105,9 +105,9 @@ def update_product(id):                                                         
 
 
         data = request.get_json()
-        product.name = data.get(name, product.name)
-        product.price = data.get(price, product.price)
-        product.quantity = data.get(quantity, product.quantity)
+        product.name = data.get("name", product.name)
+        product.price = data.get("price", product.price)
+        product.quantity = data.get("quantity", product.quantity)
         db.session.commit()                                                              #take input from html and save changes to database
 
         return jsonify({"message": "Product updated successfully"})                       #once the product is updated return successful message
