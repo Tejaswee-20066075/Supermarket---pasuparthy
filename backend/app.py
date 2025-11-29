@@ -4,7 +4,7 @@ from flask_cors import CORS
 import hashlib
 
 app= Flask (__name__)                                                       #creates flask app
-CORS(app, resources={r"/*": {"origins": "*"}}, allow_headers="*", supports_credentials=True)  #CORS means Cross origin request which joins frontend javascript to backend APIs
+CORS(app) #CORS means Cross origin request which joins frontend javascript to backend APIs
 
 @app.after_request                                                                #taken this from chatgpt for correcting error
 def add_cors_headers(response):
@@ -39,8 +39,10 @@ def health():
 
 #registering a user
 
-@app.route("/api/register", methods=["POST"])
+@app.route("/api/register", methods=["POST","OPTIONS"])
 def register():
+    if request.method =="OPTIONS":
+        return '',200
     data = request.get_json()
     name = data.get("name")
     email = data.get("email")
@@ -61,8 +63,10 @@ def register():
     db.session.commit()
     return jsonify({"message": "User registered successfully"}), 201
 
-@app.route("/api/login", methods=["POST"])                                      # creating route for user login
+@app.route("/api/login", methods=["POST","OPTIONS"])                                      # creating route for user login
 def login():
+    if request.method =="OPTIONS":
+        return '',200
     data = request.get_json()
     email = data.get("email")
     password = data.get("password")
@@ -77,8 +81,10 @@ def login():
     else:
         return jsonify({"error": "Invalid credentials"}), 401                       #error if credentials are wrong
 
-@app.route("/api/products", methods=["POST"])                                       #crearing route for products items
-def create_product():                                                              
+@app.route("/api/products", methods=["POST","OPTIONS"])                                       #crearing route for products items
+def create_product():
+    if request.method =="OPTIONS":
+        return '',200                                                              
     data = request.get_json()
     name = data.get("name")
     price = data.get("price")
@@ -92,8 +98,10 @@ def create_product():
 
     return jsonify({"message": "Product added successfully"}), 201                      #return message for function product once product added succesfully
 
-@app.route("/api/products", methods=["GET"])                                           #route for seeing all the products
-def get_products():                                                                    #function to get all products
+@app.route("/api/products", methods=["GET","OPTIONS"])                                           #route for seeing all the products
+def get_products():
+    if request.method =="OPTIONS":
+        return '',200                                                                   #function to get all products
     products = Product.query.all()                                                     # it represents sqlalchemy table for products
     result = []
     for p in products:                                                                #converting sqlalchemy objects to json
@@ -105,8 +113,10 @@ def get_products():                                                             
         })
     return jsonify(result)
 
-@app.route("/api/products/<int:id>", methods=["PUT"])                                 #route for updating the products by id
-def update_product(id):                                                               #function product update
+@app.route("/api/products/<int:id>", methods=["PUT","OPTIONS"])                                 #route for updating the products by id
+def update_product(id):   
+        if request.method =="OPTIONS":
+            return '',200                                                            #function product update
         product = Product.query.get(id)
         if not Product:                                               #it looks for product id in databaseif not product:
             return jsonify({"error": "Product not found"}), 404                           #if product id doesnt found returns 404
@@ -120,8 +130,10 @@ def update_product(id):                                                         
 
         return jsonify({"message": "Product updated successfully"})                       #once the product is updated return successful message
 
-@app.route("/api/products/<int:id>", methods=["DELETE"])                              #route to delete product by id
+@app.route("/api/products/<int:id>", methods=["DELETE","OPTIONS"])                              #route to delete product by id
 def delete_product(id):
+    if request.method =="OPTIONS":
+        return '',200
     product = Product.query.get(id)                                                   #function for delete product
     if not product:
         return jsonify({"error": "Product not found"}), 404                           #if product id doesnt found return error
