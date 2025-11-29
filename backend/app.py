@@ -93,7 +93,7 @@ def create_product():
         return jsonify({"error": "Name, price, and quantity are required"}), 400
 
     new_product = Product(name=name, price=price, quantity=quantity)                     #adding product to db
-    db.sesion.add(new_product)
+    db.session.add(new_product)
     db.session.commit()
 
     return jsonify({"message": "Product added successfully"}), 201                      #return message for function product once product added succesfully
