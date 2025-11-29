@@ -4,7 +4,15 @@ from flask_cors import CORS
 import hashlib
 
 app= Flask (__name__)                                                       #creates flask app
-CORS(app, resources={r"/*": {"origins": "*"}}, allow_headers="*", supports_credentials=True)                                                                  #CORS means Cross origin request which joins frontend javascript to backend APIs
+CORS(app, resources={r"/*": {"origins": "*"}}, allow_headers="*", supports_credentials=True)  #CORS means Cross origin request which joins frontend javascript to backend APIs
+
+@app.after_request                                                                #taken this from chatgpt for correcting error
+def add_cors_headers(response):
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
+    response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
+    return response                                                                 
+ 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'           #here we are creating db which is sqlite
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False            
