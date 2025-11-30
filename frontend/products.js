@@ -108,7 +108,7 @@ function openEdit(id, name, price, qty) {                                       
     editID = id;                                                                   //stores id in variable editID
     document.getElementById("editName").value = name;                                  //Puts the product’s name,price,quantity into the input field with id
     document.getElementById("editPrice").value = price;
-    document.getElementById("editQty").value = qty;
+    document.getElementById("editQuantity").value = qty;
     document.getElementById("editProduct").style.display = "block";                    //This makes the editProduct visible on the screen.  
 }
 function updateProduct() {                                                              //function for updating products
