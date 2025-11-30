@@ -32,7 +32,7 @@
             
         }
         fetch(API_URL + "/api/register", {                                                       //sends request from js to backend API
-            method: POST,                                                                        //method POST send data to server
+            method: "POST",                                                                        //method POST send data to server
             headers: { "Content-Type": "application/joson" },
             body: JSON.stringify({                                                               //give data in json format
                 name: name,
