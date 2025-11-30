@@ -47,6 +47,10 @@ function addProduct(){                                                          
         alert("Product name is required");
         return;
     }
+    if (!price || isNaN(price) || parseFloat(price) < 0) {
+        alert("Please enter a valid price (must be a number >= 0)");
+        return;
+    }
 
 
     fetch(API_URL + "/api/products", {                                                        //connects backend product API
