@@ -49,10 +49,11 @@ function deleteProduct(id) {                                                    
     .then(() => {
         alert("Product deleted");
         loadProducts();
-    });
-    
+    });    
 }
 
-
+function openEdit(id, name, price, qty) {                                         //function for editID
+    
+}
 
   
