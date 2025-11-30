@@ -74,7 +74,7 @@ function addProduct(){                                                          
         alert("Product added");
         loadProducts();                                                                    //loads added products
     })
-    .catch.catch(error => {
+    .catch(error => {
         console.error("Error adding product:", error);
         alert(error.message || "Error adding product. Please try again.");
     });
