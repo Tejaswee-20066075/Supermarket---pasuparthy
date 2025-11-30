@@ -16,15 +16,20 @@
     </form>
     <p><a href="login.html">Already Registered? Login to your Account</a></p>
     <script>
-        var API_URL = "https://tejaswee-20066075-supermarket---pasuparthy-5000.app.github.dev";                       
+        var API_URL = window.location.origin;                       
         function doRegister() {                                                                      //function for registration
             var name = document.RegistrationForm.name.value;                                     //get name,email etc from form
             var email = document.RegistrationForm.email.value;
             var pass = document.RegistrationForm.password.value;
             var conf = document.RegistrationForm.confirm.value;
+            if (!name || !email || !pass || !conf) {
+                alert("All fields are required");
+                return false;
+            }
             if (pass !== conf) {                                                                  //if password and confirm password are same return they doesn't match
             alert("Passwords do not match");
             return false;
+            
         }
         fetch(API_URL + "/api/register", {                                                       //sends request from js to backend API
             method: POST,                                                                        //method POST send data to server
