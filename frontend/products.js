@@ -21,19 +21,21 @@ function loadProducts() {                                                       
                         <td>${p.name}</td>
                         <td>${p.price}</td>
                         <td>${p.quantity}</td>
-                        <td>                                                         //table cell
-                            <button class="edit" onclick="openEdit(${p.id}, '${p.name}', ${p.price}, ${p.quantity})">Edit</button>      //calls openEdit() with product details.
-                            <button class="delete" onclick="deleteProduct(${p.id})">Delete</button>                                     //calls backend to delete that product.
+                        <td>                                                         
+                            <button class="edit" onclick="openEdit(${p.id}, '${p.name}', ${p.price}, ${p.quantity})">Edit</button>      
+                            <button class="delete" onclick="deleteProduct(${p.id})">Delete</button>                                     
                         </td>
                     </tr>
                 `;
             });
+        }
             document.querySelector("#productTable tbody").innerHTML = rows;                                                        //Finds the table row of your table and inserts all the newly created rows
         })
         .catch(error => {
             console.error("Error loading products:", error);
             alert("Error while loading products.");
         });
+    
 }
 
 loadProducts();                                                                            //Loads the products.
