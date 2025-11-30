@@ -109,25 +109,56 @@ function openEdit(id, name, price, qty) {                                       
     document.getElementById("editQty").value = qty;
     document.getElementById("editProduct").style.display = "block";                    //This makes the editProduct visible on the screen.  
 }
-function updateProduct() {                                                             //function for updating products
+function updateProduct() {                                                              //function for updating products
+    if (!editID) {
+        alert("No product selected for editing");
+        return;
+    }                                                                                 
     let name = document.getElementById("editName").value;                              //gets update values for name, price and quantity from edit form.
     let price = document.getElementById("editPrice").value;
     let qty = document.getElementById("editQty").value;
-
+    if (!name) {
+        alert("Product name is required");
+        return;
+    }
+    if (!price || isNaN(price) || parseFloat(price) < 0) {
+        alert("Please enter a valid price (must be a number >= 0)");
+        return;
+    }
+    if (!qty || isNaN(qty) || parseInt(qty) < 0 || !Number.isInteger(parseFloat(qty))) {
+        alert("Please enter a valid quantity (must be a whole number >= 0)");
+        return;
+    }
     fetch(API_URL + "/api/products/" + editID, {                                        //fetches API products using editId
         method: "PUT",                                                                   //method PUT used to update exsisting data
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, price, quantity: qty })                          //gives data in json format
+        body: JSON.stringify({ name:name, parseFloat(price), quantity: parseInt(qty) })                          //gives data in json format
     })
-    .then(res => res.json())                                                          //reads the server’s response and parses it into JavaScript.
+    .then(res => {                                       
+        if (!res.ok) {
+            return res.json().then(data => {                                                            //reads the server’s response and parses it into JavaScript
+                throw new Error(data.error || "Failed to update product");
+            });
+        }
+        return res.json();
+    })
+                                                          
     .then(() => {
         alert("Product updated");
         closeModal();                                                                //hides the edit popup
         loadProducts();                                                              //loads the product list
+    })
+    .catch(error => {
+        console.error("Error updating product:", error);
+        alert(error.message || "Error updating product. Please try again.");
     });
 }
 function closeModal() {                                                              //function for closeModal
     document.getElementById("editProduct").style.display = "none";                   //search for html element with the ID editProduct, changes the element css so it becomes hidden.
+    editID = Null;
+    document.getElementById("editName").value = "";
+    document.getElementById("editPrice").value = "";
+    document.getElementById("editQuantity").value = "";
 }
 
 
