@@ -29,10 +29,18 @@ function addProduct(){                                                          
     let name = document.getElementById("pname").value;
     let price = document.getElementById("pprice").value;
     let qty = document.getElementById("pqty").value;
-}
-fetch(API_URL + "/api/products", {                                                        //connects backend product API
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, price, quantity: qty })                               //gives data as json format
+
+    fetch(API_URL + "/api/products", {                                                        //connects backend product API
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, price, quantity: qty })                               //gives data as json format
     })
+    .then(res => res.json())                                                                  // response in json
+        .then(() => {
+            alert("Product added");
+            loadProducts();                                                                    //loads added products
+    });
+}
+
+
   
