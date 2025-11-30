@@ -54,9 +54,9 @@ def register():
         if not name or not email or not password:
             return jsonify({"error": "All fields are required"}), 400
         
-    existing_user = User.query.filter_by(email=email).first()
-    if existing_user:
-        return jsonify({"error": "Email already registered"}), 400
+        existing_user = User.query.filter_by(email=email).first()
+        if existing_user:
+            return jsonify({"error": "Email already registered"}), 400
 
 
 #hashing password using python library hashlib
