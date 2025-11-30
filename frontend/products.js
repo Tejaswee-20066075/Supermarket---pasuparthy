@@ -13,7 +13,10 @@ function loadProducts() {                                                       
         let rows = "";
         if (data.length ===0){
             rows ="<tr><td colspan='5' style='text-align: center;'>No products found</td></tr>";
-        }                                                                                          
+        }else{
+            data.forEach(p => {
+                rows +=`
+                    <tr>
                         <td>${p.id}</td>
                         <td>${p.name}</td>
                         <td>${p.price}</td>
@@ -26,6 +29,10 @@ function loadProducts() {                                                       
                 `;
             });
             document.querySelector("#productTable tbody").innerHTML = rows;                                                        //Finds the table row of your table and inserts all the newly created rows
+        })
+        .catch(error => {
+            console.error("Error loading products:", error);
+            alert("Error while loading products.");
         });
 }
 
