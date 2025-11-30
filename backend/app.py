@@ -107,7 +107,7 @@ def create_product():
         quantity = data.get("quantity")
         if not name or price is None or quantity is None:                                    #error message for product requirement fields
             return jsonify({"error": "Name, price, and quantity are required"}), 400
-      try:
+        try:
             price = float(price)
             quantity = int(quantity)
         except (ValueError, TypeError):
