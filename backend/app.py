@@ -112,7 +112,7 @@ def create_product():
             quantity = int(quantity)
         except (ValueError, TypeError):
             return jsonify({"error": "Price must be a number and quantity must be an integer"}), 400
-          if price < 0:
+        if price < 0:
             return jsonify({"error": "Price cannot be negative"}), 400
         
         if quantity < 0:
