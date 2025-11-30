@@ -25,6 +25,12 @@ class Product(db.Model):                                              # we are a
     price = db.Column(db.Float, nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
 
+@app.route("/")                                                               # Route to serve login page as home
+def home():
+    frontend_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'frontend')
+    return send_file(os.path.join(frontend_path, 'login.html'))
+
+
 
 # check the routes of API
 @app.route("/api/health")
