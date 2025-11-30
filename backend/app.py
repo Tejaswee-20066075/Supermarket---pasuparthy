@@ -158,8 +158,8 @@ def update_product(id):
                 return jsonify({"error": "Product not found"}), 404
 
             data = request.get_json()
-            if not product:                                               #it looks for product id in databaseif not product:
-                return jsonify({"error": "Product not found"}), 404                           #if product id doesnt found returns 404
+            if not data:
+                return jsonify({"error": "No data provided"}), 400                           #if product id doesnt found returns 404
             if "name" in data:
                 name = data.get("name", "").strip()
                 if name:
