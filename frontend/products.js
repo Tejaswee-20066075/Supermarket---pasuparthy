@@ -2,7 +2,13 @@ var API_URL = window.location.origin;
 let editID = null;                                                                 //when you want to edit a product by ID
 function loadProducts() {                                                          //function to grt all products
     fetch(API_URL + "/api/products")                                               //calls backend product api
-     .then(res => res.json())                                                      //where backend sends data in json format
+     .then(res => {
+        if (!res.ok) {
+            throw new Error('Failed to load products');
+        }
+         return res.json();
+     })
+                                                      //where backend sends data in json format
         .then(data => {                                                            //data in array form
             let rows = "";
             data.forEach(p => {                                                     //for each product will create a row
