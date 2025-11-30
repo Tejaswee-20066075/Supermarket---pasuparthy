@@ -51,17 +51,30 @@ function addProduct(){                                                          
         alert("Please enter a valid price (must be a number >= 0)");
         return;
     }
-
-
+    if (!qty || isNaN(qty) || parseInt(qty) < 0 || !Number.isInteger(parseFloat(qty))) {
+        alert("Please enter a valid quantity (must be a whole number >= 0)");
+        return;
+    }
     fetch(API_URL + "/api/products", {                                                        //connects backend product API
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name, price, quantity: qty })                               //gives data as json format
+            body: JSON.stringify({ name:name, price:parseFloat(price), quantity: parseInt(qty) })                               //gives data as json format
     })
-    .then(res => res.json())                                                                  // response in json
-        .then(() => {
-            alert("Product added");
-            loadProducts();                                                                    //loads added products
+    .then(res => {
+        if (!res.ok) {
+            return res.json().then(data => {
+                throw new Error(data.error || "Failed to add product");
+            });
+        }
+        return res.json();
+    })                                                                                                          // response in json
+    .then(() => {
+        alert("Product added");
+        loadProducts();                                                                    //loads added products
+    })
+    .catch.catch(error => {
+        console.error("Error adding product:", error);
+        alert(error.message || "Error adding product. Please try again.");
     });
 }
 function deleteProduct(id) {                                                                   //function for delete product by Id
