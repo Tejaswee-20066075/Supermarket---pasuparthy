@@ -134,7 +134,7 @@ function updateProduct() {                                                      
     fetch(API_URL + "/api/products/" + editID, {                                        //fetches API products using editId
         method: "PUT",                                                                   //method PUT used to update exsisting data
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name:name, parseFloat(price), quantity: parseInt(qty) })                          //gives data in json format
+        body: JSON.stringify({ name:name, price:parseFloat(price), quantity: parseInt(qty) })                          //gives data in json format
     })
     .then(res => {                                       
         if (!res.ok) {
