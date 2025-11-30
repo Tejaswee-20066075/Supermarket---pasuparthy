@@ -2,8 +2,9 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import hashlib
+import os 
 
-app= Flask (__name__)                                                       #creates flask app
+app= Flask (__name__, static_folder='../frontend', static_url_path='')                                                       #creates flask app
 CORS(app) #CORS means Cross origin request which joins frontend javascript to backend APIs
                                                                 
  
