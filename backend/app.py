@@ -79,11 +79,11 @@ def login():
         data = request.get_json()
         if not data:
             return jsonify({"error": "No data provided"}), 400
-    email = data.get("email")
-    password = data.get("password")
+        email = data.get("email")
+        password = data.get("password")
 
-    if not email or not password:
-        return jsonify({"error" : "Email and password required"}), 400              #user login error message
+        if not email or not password:
+            return jsonify({"error" : "Email and password required"}), 400              #user login error message
 
 
     user = User.query.filter_by(email=email).first()                                   #user login success message
