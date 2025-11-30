@@ -153,26 +153,26 @@ def update_product(id):
         if request.method =="OPTIONS":
             return '',200                                                            #function product update
         try:
-        product = Product.query.get(id)
-        if not product:
-            return jsonify({"error": "Product not found"}), 404
+            product = Product.query.get(id)
+            if not product:
+                return jsonify({"error": "Product not found"}), 404
 
-        data = request.get_json()
-        if not product:                                               #it looks for product id in databaseif not product:
-            return jsonify({"error": "Product not found"}), 404                           #if product id doesnt found returns 404
-          if "name" in data:
-            name = data.get("name", "").strip()
-            if name:
-                product.name = name
+            data = request.get_json()
+            if not product:                                               #it looks for product id in databaseif not product:
+                return jsonify({"error": "Product not found"}), 404                           #if product id doesnt found returns 404
+            if "name" in data:
+                name = data.get("name", "").strip()
+                if name:
+                    product.name = name
         
-        if "price" in data:
-            try:
-                price = float(data.get("price"))
-                if price < 0:
-                    return jsonify({"error": "Price cannot be negative"}), 400
-                product.price = price
-            except (ValueError, TypeError):
-                return jsonify({"error": "Price must be a valid number"}), 400
+            if "price" in data:
+                try:
+                    price = float(data.get("price"))
+                    if price < 0:
+                        return jsonify({"error": "Price cannot be negative"}), 400
+                    product.price = price
+                except (ValueError, TypeError):
+                    return jsonify({"error": "Price must be a valid number"}), 400
         
         if "quantity" in data:
             try:
