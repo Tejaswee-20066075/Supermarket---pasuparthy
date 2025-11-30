@@ -132,17 +132,19 @@ def create_product():
 def get_products():
     if request.method =="OPTIONS":
         return '',200                                                                   #function to get all products
-    products = Product.query.all()                                                     # it represents sqlalchemy table for products
-    result = []
-    for p in products:                                                                #converting sqlalchemy objects to json
-        result.append({
-            "id": p.id,
-            "name": p.name,
-            "price": p.price,
-            "quantity": p.quantity
-        })
-    return jsonify(result),200
-except Exception as e:
+    try:
+        products = Product.query.all()                                                     # it represents sqlalchemy table for products
+        result = []
+        for p in products:                                                                #converting sqlalchemy objects to json
+            result.append({
+                "id": p.id,
+                "name": p.name,
+                "price": p.price,
+                "quantity": p.quantity
+            })
+        return jsonify(result),200
+
+    except Exception as e:
         return jsonify({"error": "Failed to retrieve products"}), 500
 
 
