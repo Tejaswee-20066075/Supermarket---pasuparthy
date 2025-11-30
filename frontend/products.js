@@ -69,6 +69,12 @@ function updateProduct() {                                                      
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, price, quantity: qty })                          //gives data in json format
     })
+    .then(res => res.json())                                                          //reads the server’s response and parses it into JavaScript.
+    .then(() => {
+        alert("Product updated");
+        closeModal();                                                                //hides the edit popup
+        loadProducts();                                                              //loads the product list
+    });
 }
 
 
