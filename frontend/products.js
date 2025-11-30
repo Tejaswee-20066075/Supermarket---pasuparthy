@@ -63,6 +63,12 @@ function updateProduct() {                                                      
     let name = document.getElementById("editName").value;                              //gets update values for name, price and quantity from edit form.
     let price = document.getElementById("editPrice").value;
     let qty = document.getElementById("editQty").value;
+
+    fetch(API_URL + "/api/products/" + editID, {                                        //fetches API products using editId
+        method: "PUT",                                                                   //method PUT used to update exsisting data
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, price, quantity: qty })                          //gives data in json format
+    })
 }
 
 
