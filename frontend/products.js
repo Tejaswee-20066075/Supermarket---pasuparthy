@@ -43,6 +43,12 @@ function addProduct(){                                                          
     let price = document.getElementById("pprice").value;
     let qty = document.getElementById("pqty").value;
 
+    if(!name){
+        alert("Product name is required");
+        return;
+    }
+
+
     fetch(API_URL + "/api/products", {                                                        //connects backend product API
             method: "POST",
             headers: { "Content-Type": "application/json" },
