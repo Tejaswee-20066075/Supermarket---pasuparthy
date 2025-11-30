@@ -44,7 +44,7 @@ def health():
 def register():
     if request.method =="OPTIONS":
         return '',200
-     try:
+    try:
         data = request.get_json()
         if not data:
             return jsonify({"error": "No data provided"}), 400
