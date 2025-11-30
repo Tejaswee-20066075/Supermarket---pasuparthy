@@ -42,6 +42,9 @@ function addProduct(){                                                          
     });
 }
 function deleteProduct(id) {                                                                   //function for delete product by Id
+     fetch(API_URL + "/api/products/" + id, {                                                  //fetches backend API for products by id uses method delete
+        method: "DELETE"
+    })
     
 }
 
