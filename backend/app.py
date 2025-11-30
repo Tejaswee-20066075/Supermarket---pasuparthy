@@ -174,20 +174,19 @@ def update_product(id):
                 except (ValueError, TypeError):
                     return jsonify({"error": "Price must be a valid number"}), 400
         
-        if "quantity" in data:
-            try:
-                quantity = int(data.get("quantity"))
-                if quantity < 0:
-                    return jsonify({"error": "Quantity cannot be negative"}), 400
-                product.quantity = quantity
-            except (ValueError, TypeError):
-                return jsonify({"error": "Quantity must be a valid integer"}), 400
-
-        db.session.commit()                                                              #take input from html and save changes to database
-        return jsonify({"message": "Product updated successfully"}),200                       #once the product is updated return successful message
-    except Exception as e:
-        db.session.rollback()
-        return jsonify({"error": "Failed to update product. Please try again."}), 500
+            if "quantity" in data:
+                try:
+                    quantity = int(data.get("quantity"))
+                    if quantity < 0:
+                        return jsonify({"error": "Quantity cannot be negative"}), 400
+                    product.quantity = quantity
+                except (ValueError, TypeError):
+                    return jsonify({"error": "Quantity must be a valid integer"}), 400
+            db.session.commit()                                                              #take input from html and save changes to database
+            return jsonify({"message": "Product updated successfully"}),200                       #once the product is updated return successful message
+        except Exception as e:
+            db.session.rollback()
+            return jsonify({"error": "Failed to update product. Please try again."}), 500
 
 @app.route("/api/products/<int:id>", methods=["DELETE","OPTIONS"])                              #route to delete product by id
 def delete_product(id):
