@@ -61,12 +61,12 @@ def register():
 
 #hashing password using python library hashlib
 
-    password_hash = hashlib.sha256(password.encode()).hexdigest()    
-    new_user = User(name=name, email=email, password_hash=password_hash)
-    db.session.add(new_user)
-    db.session.commit()
-    return jsonify({"message": "User registered successfully"}), 201
-except Exception as e:
+        password_hash = hashlib.sha256(password.encode()).hexdigest()    
+        new_user = User(name=name, email=email, password_hash=password_hash)
+        db.session.add(new_user)
+        db.session.commit()
+        return jsonify({"message": "User registered successfully"}), 201
+    except Exception as e:
         db.session.rollback()
         return jsonify({"error": "Registration failed. Please try again."}), 500
 
