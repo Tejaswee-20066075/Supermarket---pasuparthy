@@ -41,6 +41,10 @@ function addProduct(){                                                          
             loadProducts();                                                                    //loads added products
     });
 }
+function deleteProduct(id) {                                                                   //function for delete product by Id
+    
+}
+
 
 
   
