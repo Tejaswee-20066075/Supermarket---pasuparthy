@@ -9,11 +9,11 @@ function loadProducts() {                                                       
          return res.json();
      })
                                                       //where backend sends data in json format
-        .then(data => {                                                            //data in array form
-            let rows = "";
-            data.forEach(p => {                                                     //for each product will create a row
-                rows += `
-                    <tr>                                                            //table row
+    .then(data => {                                                            //data in array form
+        let rows = "";
+        if (data.length ===0){
+            rows ="<tr><td colspan='5' style='text-align: center;'>No products found</td></tr>";
+        }                                                                                          
                         <td>${p.id}</td>
                         <td>${p.name}</td>
                         <td>${p.price}</td>
