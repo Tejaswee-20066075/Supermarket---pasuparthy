@@ -118,12 +118,12 @@ def create_product():
         if quantity < 0:
             return jsonify({"error": "Quantity cannot be negative"}), 400
 
-    new_product = Product(name=name, price=price, quantity=quantity)                     #adding product to db
-    db.session.add(new_product)
-    db.session.commit()
+        new_product = Product(name=name, price=price, quantity=quantity)                     #adding product to db
+        db.session.add(new_product)
+        db.session.commit()
 
-    return jsonify({"message": "Product added successfully"}), 201                      #return message for function product once product added succesfully
-except Exception as e:
+        return jsonify({"message": "Product added successfully"}), 201                      #return message for function product once product added succesfully
+    except Exception as e:
         db.session.rollback()
         return jsonify({"error": "Failed to add product. Please try again."}), 500
 
