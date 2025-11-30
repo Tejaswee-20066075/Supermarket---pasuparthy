@@ -102,11 +102,11 @@ def create_product():
         data = request.get_json()
         if not data:
             return jsonify({"error": "No data provided"}), 400
-    name = data.get("name")
-    price = data.get("price")
-    quantity = data.get("quantity")
-    if not name or price is None or quantity is None:                                    #error message for product requirement fields
-        return jsonify({"error": "Name, price, and quantity are required"}), 400
+        name = data.get("name")
+        price = data.get("price")
+        quantity = data.get("quantity")
+        if not name or price is None or quantity is None:                                    #error message for product requirement fields
+            return jsonify({"error": "Name, price, and quantity are required"}), 400
       try:
             price = float(price)
             quantity = int(quantity)
