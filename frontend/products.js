@@ -45,6 +45,11 @@ function deleteProduct(id) {                                                    
      fetch(API_URL + "/api/products/" + id, {                                                  //fetches backend API for products by id uses method delete
         method: "DELETE"
     })
+    .then(res => res.json())                                                                   //converts the response body into json format.                                         
+    .then(() => {
+        alert("Product deleted");
+        loadProducts();
+    });
     
 }
 
