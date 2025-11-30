@@ -14,10 +14,15 @@
       </form>
     <p><a href="register.html">Don't have an account? Register Now</a></p>
     <script>
-      var API_URL = "https://glowing-meme-jj7wq64jpl4qjc4jg-5000.app.github.dev";                     //connect with backend flask with port 5000
+      var API_URL = window.location.origin;                     //connect with backend flask with port 5000
       function validateLogin() {                                                                                  //creating function to validate login credentials
         var email = document.loginForm.email.value                                                                // variable email get from login form
-        var pass  = document.loginForm.password.value                                                             // variable pass get from login form
+        var pass  = document.loginForm.password.value            // variable pass get from login form
+        if (!email || !pass) {
+          alert("Email and password are required");
+          return false;
+        }
+                                                             
         fetch(API_URL + "/api/login", {                                                                           //calling backend login API
         method: "POST",                                                                                           //POST the login data in json format also converts js object to json
         headers: { "Content-Type": "application/json" },
