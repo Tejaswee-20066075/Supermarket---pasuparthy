@@ -76,6 +76,9 @@ function updateProduct() {                                                      
         loadProducts();                                                              //loads the product list
     });
 }
+function closeModal() {                                                              //function for closeModal
+    document.getElementById("editProduct").style.display = "none";                   //search for html element with the ID editProduct, changes the element css so it becomes hidden.
+}
 
 
   
