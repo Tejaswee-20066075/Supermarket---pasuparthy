@@ -80,7 +80,7 @@ def login():
         if not data:
             return jsonify({"error": "No data provided"}), 400
         email = data.get("email","").strip().lower()
-        password = data.get("password")
+        password = data.get("password").strip()
 
         if not email or not password:
             return jsonify({"error" : "Email and password required"}), 400              #user login error message
