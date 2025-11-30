@@ -24,4 +24,7 @@ function loadProducts() {                                                       
 }
 
 loadProducts();                                                                            //Loads the products.
+
+function addProduct()                                                                      //function for adding products
+
   
