@@ -60,7 +60,9 @@ function openEdit(id, name, price, qty) {                                       
     document.getElementById("editProduct").style.display = "block";                    //This makes the editProduct visible on the screen.  
 }
 function updateProduct() {                                                             //function for updating products
-    
+    let name = document.getElementById("editName").value;                              //gets update values for name, price and quantity from edit form.
+    let price = document.getElementById("editPrice").value;
+    let qty = document.getElementById("editQty").value;
 }
 
 
