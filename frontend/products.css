@@ -13,3 +13,13 @@ h2, h3 {
     padding: 15px;
     border-radius: 8px;
 }
+input {
+    width: 90%;
+    padding: 8px;
+    margin: 5px 0;
+}
+button {
+    padding: 8px 12px;
+    margin-top: 10px;
+    cursor: pointer;
+}
