@@ -30,4 +30,9 @@ function addProduct(){                                                          
     let price = document.getElementById("pprice").value;
     let qty = document.getElementById("pqty").value;
 }
+fetch(API_URL + "/api/products", {                                                        //connects backend product API
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, price, quantity: qty })                               //gives data as json format
+    })
   
