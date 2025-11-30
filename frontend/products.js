@@ -25,6 +25,9 @@ function loadProducts() {                                                       
 
 loadProducts();                                                                            //Loads the products.
 
-function addProduct()                                                                      //function for adding products
-
+function addProduct(){                                                                      //function for adding products
+    let name = document.getElementById("pname").value;
+    let price = document.getElementById("pprice").value;
+    let qty = document.getElementById("pqty").value;
+}
   
