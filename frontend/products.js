@@ -92,7 +92,7 @@ function deleteProduct(id) {
                 throw new Error(data.error || "Failed to delete product");
             });
         }
-        return res.json();                                                                        /converts the response body into json format.
+        return res.json();                                                                        //converts the response body into json format.
     })
     .then(() => {
         alert("Product deleted");
