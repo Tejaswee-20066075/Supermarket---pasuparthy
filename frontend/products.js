@@ -118,7 +118,7 @@ function updateProduct() {                                                      
     }                                                                                 
     let name = document.getElementById("editName").value;                              //gets update values for name, price and quantity from edit form.
     let price = document.getElementById("editPrice").value;
-    let qty = document.getElementById("editQty").value;
+    let qty = document.getElementById("editQuantity").value;
     if (!name) {
         alert("Product name is required");
         return;
