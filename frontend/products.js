@@ -77,15 +77,29 @@ function addProduct(){                                                          
         alert(error.message || "Error adding product. Please try again.");
     });
 }
-function deleteProduct(id) {                                                                   //function for delete product by Id
+function deleteProduct(id) {
+    if (!confirm("DELETE")) {
+        return;
+    }                                                                                           //function for delete product by Id
      fetch(API_URL + "/api/products/" + id, {                                                  //fetches backend API for products by id uses method delete
         method: "DELETE"
     })
-    .then(res => res.json())                                                                   //converts the response body into json format.                                         
+    .then(res => {
+        if (!res.ok) {
+            return res.json().then(data => {
+                throw new Error(data.error || "Failed to delete product");
+            });
+        }
+        return res.json();                                                                        /converts the response body into json format.
+    })
     .then(() => {
         alert("Product deleted");
         loadProducts();
-    });    
+    })
+    .catch(error => {
+        console.error("Error deleting product:", error);
+        alert(error.message || "Error deleting product. Please try again.");
+    });
 }
 
 function openEdit(id, name, price, qty) {                                         //function for editID
