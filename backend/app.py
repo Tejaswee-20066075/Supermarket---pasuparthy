@@ -199,9 +199,9 @@ def delete_product(id):
       db.session.delete(product)                                                        #delete from database
       db.session.commit()
       return jsonify({"message": "Product deleted successfully"}),200                      #if it is deleted then return message success
-  except Exception as e:
-      db.session.rollback()
-      return jsonify({"error": "Failed to delete product. Please try again."}), 500
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": "Failed to delete product. Please try again."}), 500
 
 @app.route("/<path:filename>")                                                               # Route to serve static files (HTML, CSS, JS) - must be after API routes
 def serve_static(filename):
