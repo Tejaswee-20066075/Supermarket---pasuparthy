@@ -321,6 +321,8 @@ Github repository:
 https://github.com/Tejaswee-20066075/Supermarket---pasuparthy 
 References:
 Sqlalchemy  : https://docs.sqlalchemy.org/en/14/core/tutorial.html
+Cors: https://stackoverflow.com/questions/25594893/how-to-enable-cors-in-flask
+      https://medium.com/@mterrano1/cors-in-a-flask-api-38051388f8cc
 Password hashing : https://greeksforgreeks.org/python/how-to-hash-passwords-in-python/ 
 SQLAlchemy to json format - https://www.geeksforgeeks.org/python/serialize-python-sqlalchemy-result-to-json/
 Javascript in html pages : https://www.w3schools.com/howto/howto_css_login_form.asp
